@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "838992866250",
+    "project_id": "chatterbox-d1d06",
+    "storage_bucket": "chatterbox-d1d06.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:838992866250:android:01721702ddf9fb01d5bd33",
+        "android_client_info": {
+          "package_name": "com.example.chatterbox"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "838992866250-5kdbu4bfima80j5ckq99r12edvnm3a5r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.chatterbox",
+            "certificate_hash": "4f15b9898678f4d00a321b053fe0957ee81176ea"
+          }
+        },
+        {
+          "client_id": "838992866250-hckhun9oi7s8ecad38pqv14qg3e5q2vl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBgGWYWTTpLaMx60Q3gh3TN4FUJzOIGUg4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "838992866250-hckhun9oi7s8ecad38pqv14qg3e5q2vl.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "838992866250-kr02vuj2bfnv9p6l00mdetb6t6odpun5.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.chatterbox"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
