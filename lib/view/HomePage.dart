@@ -100,7 +100,7 @@ class _HomePageState extends State<HomePage> {
                               ),
                             ),
                             title: Text(
-                              email,
+                              email.toString().split('@')[0],
                               style: const TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.w500,

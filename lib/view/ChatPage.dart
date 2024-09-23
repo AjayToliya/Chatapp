@@ -2,6 +2,7 @@ import 'package:chatterbox/utils/FCM_noti_Helper.dart';
 import 'package:chatterbox/utils/FireStore.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import '../utils/Auth_Hepler.dart';
 
@@ -21,13 +22,10 @@ class _ChatPageState extends State<ChatPage> {
     final TextEditingController editController = TextEditingController();
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 100,
-        title: (receiverEmail == Auth_Helper.firebaseAuth.currentUser!.email)
-            ? Text("Chat Page\nYourself")
-            : Text(
-                "Chat Page\n $receiverEmail",
-                textAlign: TextAlign.center,
-              ),
+        title: Text(
+          "${receiverEmail['email'].toString().split('@')[0]}",
+          textAlign: TextAlign.center,
+        ),
         centerTitle: true,
         backgroundColor: Colors.blueAccent,
       ),
@@ -79,21 +77,38 @@ class _ChatPageState extends State<ChatPage> {
                                         (receiverEmail['email'] !=
                                                 allMessages[ind]
                                                     .data()['receiverEmail'])
-                                            ? Container(
-                                                padding: EdgeInsets.symmetric(
-                                                  horizontal: 12,
-                                                  vertical: 10,
-                                                ),
-                                                margin:
-                                                    EdgeInsets.only(bottom: 8),
-                                                decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(12),
-                                                  color: Colors.grey[200],
-                                                ),
-                                                child: Text(
-                                                  allMessages[ind]
-                                                      .data()['mag'],
+                                            ? Padding(
+                                                padding: const EdgeInsets.only(
+                                                    left: 5.0),
+                                                child: Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Chip(
+                                                      label: Text(
+                                                        "${allMessages[ind].data()['mag']}",
+                                                      ),
+                                                    ),
+                                                    // Check if the timestamp is not null
+                                                    allMessages[ind].data()[
+                                                                'timestamp'] !=
+                                                            null
+                                                        ? Text(
+                                                            DateFormat('HH:mm')
+                                                                .format(
+                                                              allMessages[ind]
+                                                                  .data()[
+                                                                      'timestamp']
+                                                                  .toDate(),
+                                                            ),
+                                                          )
+                                                        : Text(
+                                                            'Loading', // Handle case where timestamp is null
+                                                            style: TextStyle(
+                                                                color: Colors
+                                                                    .grey), // Optional styling
+                                                          ),
+                                                  ],
                                                 ),
                                               )
                                             : PopupMenuButton<String>(
@@ -119,9 +134,8 @@ class _ChatPageState extends State<ChatPage> {
                                                                         .bold),
                                                           ),
                                                           content: Padding(
-                                                            padding:
-                                                                const EdgeInsets
-                                                                    .symmetric(
+                                                            padding: EdgeInsets
+                                                                .symmetric(
                                                                     vertical:
                                                                         10),
                                                             child: Text(
@@ -220,9 +234,8 @@ class _ChatPageState extends State<ChatPage> {
                                                                     .min,
                                                             children: [
                                                               Padding(
-                                                                padding:
-                                                                    const EdgeInsets
-                                                                        .symmetric(
+                                                                padding: EdgeInsets
+                                                                    .symmetric(
                                                                         vertical:
                                                                             10),
                                                                 child:
@@ -321,20 +334,51 @@ class _ChatPageState extends State<ChatPage> {
                                                   }
                                                 },
                                                 itemBuilder: (context) => [
-                                                  const PopupMenuItem(
+                                                  PopupMenuItem(
                                                     value: 'delete',
                                                     child: Text('Delete'),
                                                   ),
-                                                  const PopupMenuItem(
+                                                  PopupMenuItem(
                                                     value: 'edit',
                                                     child: Text('Edit'),
                                                   ),
                                                 ],
                                                 position:
                                                     PopupMenuPosition.under,
-                                                child: Chip(
-                                                  label: Text(
-                                                    "${allMessages[ind].data()['mag']}",
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          right: 5),
+                                                  child: Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment.end,
+                                                    children: [
+                                                      Chip(
+                                                        label: Text(
+                                                          "${allMessages[ind].data()['mag']}",
+                                                        ),
+                                                      ),
+                                                      // Check if the timestamp is not null
+                                                      allMessages[ind].data()[
+                                                                  'timestamp'] !=
+                                                              null
+                                                          ? Text(
+                                                              DateFormat(
+                                                                      'HH:mm')
+                                                                  .format(
+                                                                allMessages[ind]
+                                                                    .data()[
+                                                                        'timestamp']
+                                                                    .toDate(),
+                                                              ),
+                                                            )
+                                                          : Text(
+                                                              'Loading', // Handle case where timestamp is null
+                                                              style: TextStyle(
+                                                                  color: Colors
+                                                                      .grey), // Optional styling
+                                                            ),
+                                                    ],
                                                   ),
                                                 ),
                                               ),
