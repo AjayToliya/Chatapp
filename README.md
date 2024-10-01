@@ -22,6 +22,28 @@
 
 ---
 
+## Directory Structure
+
+```
+lib
+├── utils
+│   ├── Auth_Helper.dart
+│   ├── FCM_noti_Helper.dart
+│   ├── FireStore.dart
+│   └── Local_Notification_Helper.dart
+├── view
+│   └── Component
+│       └── dra.dart
+├── ChatPage.dart
+├── HomePage.dart
+├── LoginPage.dart
+├── SignUpPage.dart
+├── SplashScreen.dart
+├── firebase_options.dart
+└── main.dart
+       
+```           
+
 ## **Getting Started**
 
 ### **Installation**
